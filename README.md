@@ -7,37 +7,28 @@
 ```bash
 git clone 
 ```
-
 ### 引用方法
 `from TMail import TMail`
 对于临时收件箱，该库主要有以下方法：
 - **get_account()**: 连接邮箱服务器，申请临时邮箱地址
 - **get_inbox()**: 获取收件箱，返回一个列表/字典
  - arg: 
-
-    （可选）detail=**bool** False则返回一个列表，仅包含列表，否则返回包含status_code,num的字典
+  - （可选）detail=**bool** False则返回一个列表，仅包含列表，否则返回包含status_code,num的字典
 
 - **read_mail()**: 读取邮件
  - arg:
-
-    MID=**(str)** 从get_inbox()返回值中获得MID，通过MID读取邮件详细信息
-
+  - MID=**(str)** 从get_inbox()返回值中获得MID，通过MID读取邮件详细信息
  - return:
-
-    turple(状态码，邮件简介，邮件正文) // turple(str,str,str)
+  - turple(状态码，邮件简介，邮件正文) // turple(str,str,str)
 
 - **delete_mail()**: 删除邮件，功能暂未完善...
  - arg:
-
-    MID=**(str)** 参考read_mail()
-
+  - MID=**(str)** 参考read_mail()
  - return:
- 
-    bool 删除是否成功
-
+  - bool 删除是否成功
 
 > **注意：**
-> 本库使用[**loguru**]("https://github.com/Delgan/loguru")日志处理库，可以在主程序头部增加如下代码以获得日志输出
+> 本库使用[**loguru**](https://github.com/Delgan/loguru/blob/main)日志处理库，可以在主程序头部增加如下代码以获得日志输出
 ```python
 import sys
 from loguru import logger
