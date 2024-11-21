@@ -4,31 +4,30 @@
 ## :books: 使用方法
 
 ### 下载库
-```bash
-git clone 
-```
+```git clone```
 ### 引用方法
 `from TMail import TMail`
+
 对于临时收件箱，该库主要有以下方法：
 - **get_account()**: 连接邮箱服务器，申请临时邮箱地址
 - **get_inbox()**: 获取收件箱，返回一个列表/字典
- - arg: 
-  - （可选）detail=**bool** False则返回一个列表，仅包含列表，否则返回包含status_code,num的字典
+    - arg: 
+        - （可选）detail=**bool** False则返回一个列表，仅包含列表，否则返回包含status_code,num的字典
 
 - **read_mail()**: 读取邮件
- - arg:
-  - MID=**(str)** 从get_inbox()返回值中获得MID，通过MID读取邮件详细信息
- - return:
-  - turple(状态码，邮件简介，邮件正文) // turple(str,str,str)
+    - arg:
+        - MID=**(str)** 从get_inbox()返回值中获得MID，通过MID读取邮件详细信息
+    - return:
+        - **turple**(状态码，邮件简介，邮件正文) // turple(str,str,str)
 
 - **delete_mail()**: 删除邮件，功能暂未完善...
- - arg:
-  - MID=**(str)** 参考read_mail()
- - return:
-  - bool 删除是否成功
+    - arg:
+        - MID=**(str)** 参考read_mail()
+    - return:
+        - **bool** 删除是否成功
 
 > **注意：**
-> 本库使用[**loguru**](https://github.com/Delgan/loguru/blob/main)日志处理库，可以在主程序头部增加如下代码以获得日志输出
+> 本库使用[**loguru**](https://github.com/Delgan/loguru)日志处理库，可以在主程序头部增加如下代码以获得日志输出
 ```python
 import sys
 from loguru import logger
@@ -42,14 +41,17 @@ logger.add(sys.stderr, level="DEBUG")
 from TMail import TMail
 import time
 if __name__ == '__main__':
+    # 创建实例对象
     tm = TMail()
+    # 申请邮箱
     name = tm.get_account()
-    print(name)
     while True:
-        email_list = tm.get_email_list()
+        # 获取收件箱
+        email_list = tm.get_inbox()
         print(email_list)
         if len(email_list) != 0:
             a = input("MID:")
+            # 读取邮箱
             print(tm.read_mail(a))
         for i in range(0, 10):
             print(f"\r                                {10-i}秒后自动刷新...", end="", flush=True)

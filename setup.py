@@ -4,7 +4,7 @@ from setuptools import setup
 setup(name='TMail',
       version='0.0.1',
       description='Just simply create a Temp email.',
-      url='http://github.com/tongling/clinicaltrial',
+      url='https://github.com/SpeechlessMatt/TMail',
       author='Cxy_4201b',
       author_email='speechlessmatt@qq.com',
       license='MIT',
