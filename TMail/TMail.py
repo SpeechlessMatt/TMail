@@ -41,7 +41,7 @@ class TMail:
 
         return self.account + "@chacuo.net"
 
-    def get_email_list(self, details=False) -> list|dict:
+    def get_inbox(self, details=False) -> list|dict:
         """
         刷新收件箱,返回收件箱
         Args:
